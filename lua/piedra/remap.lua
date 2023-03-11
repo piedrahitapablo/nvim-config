@@ -25,7 +25,9 @@ vim.keymap.set("n", "J", "mzJ`z")
 
 -- keep cursor centered while moving half pages
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<PageDown>", "<PageDown>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
+vim.keymap.set("n", "<PageUp>", "<PageUp>zz")
 
 -- keep cursor centered while searching
 vim.keymap.set("n", "n", "nzzzv")
