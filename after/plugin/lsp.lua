@@ -18,6 +18,17 @@ end
 
 lsp.preset("recommended")
 
+-- lsp.set_server_config({
+--   capabilities = {
+--     textDocument = {
+--       foldingRange = {
+--         dynamicRegistration = false,
+--         lineFoldingOnly = true
+--       }
+--     }
+--   }
+-- })
+
 lsp.ensure_installed({
     'tsserver',
     'lua_ls',
@@ -139,3 +150,15 @@ vim.diagnostic.config({
     underline = true,
     update_in_insert = false,
 })
+
+-- setup ufo, we need to move this to another file
+-- local status, ufo = pcall(require, "ufo")
+-- if not status then
+--     print("ufo is not installed")
+--     return
+-- end
+
+-- ufo.setup()
+
+-- vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
+-- vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)

@@ -48,11 +48,18 @@ packer.startup(function(use)
 
     use { 'rmagatti/auto-session' }
 
+    -- treesitter
     use {
         "nvim-treesitter/nvim-treesitter",
         run = ":TSUpdate"
     }
     use "nvim-treesitter/playground"
+
+    -- folding
+    -- use {
+    --     'kevinhwang91/nvim-ufo',
+    --     requires = 'kevinhwang91/promise-async'
+    -- }
 
     -- lsp and diagnostics
     use {
