@@ -129,11 +129,6 @@ _G.packer_plugins = {
     path = "/Users/piedra/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
     url = "https://github.com/lewis6991/gitsigns.nvim"
   },
-  ["glow.nvim"] = {
-    loaded = true,
-    path = "/Users/piedra/.local/share/nvim/site/pack/packer/start/glow.nvim",
-    url = "https://github.com/ellisonleao/glow.nvim"
-  },
   ["indent-blankline.nvim"] = {
     loaded = true,
     path = "/Users/piedra/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
@@ -254,10 +249,20 @@ _G.packer_plugins = {
     path = "/Users/piedra/.local/share/nvim/site/pack/packer/start/undotree",
     url = "https://github.com/mbbill/undotree"
   },
+  ["vim-commentary"] = {
+    loaded = true,
+    path = "/Users/piedra/.local/share/nvim/site/pack/packer/start/vim-commentary",
+    url = "https://github.com/tpope/vim-commentary"
+  },
   ["vim-fugitive"] = {
     loaded = true,
     path = "/Users/piedra/.local/share/nvim/site/pack/packer/start/vim-fugitive",
     url = "https://github.com/tpope/vim-fugitive"
+  },
+  ["vim-surround"] = {
+    loaded = true,
+    path = "/Users/piedra/.local/share/nvim/site/pack/packer/start/vim-surround",
+    url = "https://github.com/tpope/vim-surround"
   },
   ["vim-vinegar"] = {
     loaded = true,

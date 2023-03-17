@@ -28,16 +28,19 @@ packer.startup(function(use)
     }
     use 'navarasu/onedark.nvim'
 
+    -- telescope
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.0',
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
 
+    -- lualine
     use {
         'nvim-lualine/lualine.nvim',
         'nvim-tree/nvim-web-devicons', -- optional, for file icons
     }
 
+    -- nvim-tree
     use { "tpope/vim-vinegar" }
     use {
         'nvim-tree/nvim-tree.lua',
@@ -46,8 +49,10 @@ packer.startup(function(use)
         },
     }
 
+    -- auto save sessions
     use { 'rmagatti/auto-session' }
 
+    -- treesitter
     use {
         "nvim-treesitter/nvim-treesitter",
         run = ":TSUpdate"
@@ -89,15 +94,19 @@ packer.startup(function(use)
 
     use { 'mbbill/undotree' }
 
+    -- git
     use { 'tpope/vim-fugitive' }
     use { 'lewis6991/gitsigns.nvim' }
 
     use { "lukas-reineke/indent-blankline.nvim" }
 
+    -- code edition
     use 'windwp/nvim-autopairs'
     use 'windwp/nvim-ts-autotag'
+    use 'tpope/vim-commentary'
+    use 'tpope/vim-surround'
 
-    use "ellisonleao/glow.nvim"
+    -- previews
     use {
         "iamcco/markdown-preview.nvim",
         run = function() vim.fn["mkdp#util#install"]() end,
