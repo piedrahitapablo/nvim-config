@@ -92,6 +92,15 @@ packer.startup(function(use)
         requires = "nvim-tree/nvim-web-devicons",
     }
 
+    -- copilot
+    -- use 'github/copilot.vim'
+
+    -- tabnine
+    use {
+        'codota/tabnine-nvim',
+        run = "./dl_binaries.sh"
+    }
+
     use { 'mbbill/undotree' }
 
     -- git

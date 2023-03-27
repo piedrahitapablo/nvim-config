@@ -234,6 +234,11 @@ _G.packer_plugins = {
     path = "/Users/piedra/.local/share/nvim/site/pack/packer/start/spacecamp",
     url = "https://github.com/jaredgorski/spacecamp"
   },
+  ["tabnine-nvim"] = {
+    loaded = true,
+    path = "/Users/piedra/.local/share/nvim/site/pack/packer/start/tabnine-nvim",
+    url = "https://github.com/codota/tabnine-nvim"
+  },
   ["telescope.nvim"] = {
     loaded = true,
     path = "/Users/piedra/.local/share/nvim/site/pack/packer/start/telescope.nvim",
