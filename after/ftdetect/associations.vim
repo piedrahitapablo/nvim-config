@@ -1,4 +1,4 @@
-au BufRead,BufNewFile .env.example      setfiletype sh
+au BufRead,BufNewFile .env.*            setfiletype sh
 au BufRead,BufNewFile *.mjml            setfiletype html
 au BufRead,BufNewFile .commitlintrc     setfiletype jsonc
 au BufRead,BufNewFile .czrc             setfiletype jsonc
