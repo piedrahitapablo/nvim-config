@@ -1,4 +1,4 @@
-local function showFugitive()
+local function ShowFugitive()
     vim.cmd [[
         vertical Git
         wincmd L
@@ -8,12 +8,12 @@ local function showFugitive()
 end
 
 -- TODO: make this a toggle
-local function fugitiveStatus()
+local function FugitiveStatus()
     if vim.fn.buflisted(vim.fn.bufname('fugitive:///*/.git//$')) ~= 0 then
         vim.cmd [[ execute ":bdelete" bufname('fugitive:///*/.git//$') ]]
     else
-        showFugitive()
+        ShowFugitive()
     end
 end
 
-vim.keymap.set("n", "<leader>gs", fugitiveStatus);
+vim.keymap.set("n", "<leader>gs", FugitiveStatus);
