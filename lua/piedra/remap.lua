@@ -42,6 +42,12 @@ vim.keymap.set("n", "<leader>Y", "\"+Y")
 vim.keymap.set("n", "<leader>d", "\"_d")
 vim.keymap.set("v", "<leader>d", "\"_d")
 
+-- same as *
 vim.keymap.set("n", "<leader>ss", [[/\<<C-r><C-w>\>]])
+vim.keymap.set("v", "<leader>ss", [[/\<<C-r><C-w>\>]])
+-- replace word under cursor
 vim.keymap.set("n", "<leader>sr", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+-- replace selection (it's broken for strings that include escape sequences)
+vim.keymap.set("v", "<leader>sr", 'y:%s/<C-r>"/<C-r>"/gI<Left><Left><Left>')
+
 -- vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
