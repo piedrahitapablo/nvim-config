@@ -89,6 +89,11 @@ _G.packer_plugins = {
     path = "/Users/piedra/.local/share/nvim/site/pack/packer/start/ayu",
     url = "https://github.com/Shatur/neovim-ayu"
   },
+  ["barbecue.nvim"] = {
+    loaded = true,
+    path = "/Users/piedra/.local/share/nvim/site/pack/packer/start/barbecue.nvim",
+    url = "https://github.com/utilyre/barbecue.nvim"
+  },
   catppuccin = {
     loaded = true,
     path = "/Users/piedra/.local/share/nvim/site/pack/packer/start/catppuccin",
@@ -178,6 +183,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/piedra/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
+  },
+  ["nvim-navic"] = {
+    loaded = true,
+    path = "/Users/piedra/.local/share/nvim/site/pack/packer/start/nvim-navic",
+    url = "https://github.com/SmiteshP/nvim-navic"
   },
   ["nvim-tree.lua"] = {
     loaded = true,

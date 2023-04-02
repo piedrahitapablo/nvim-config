@@ -39,6 +39,14 @@ packer.startup(function(use)
         'nvim-lualine/lualine.nvim',
         'nvim-tree/nvim-web-devicons', -- optional, for file icons
     }
+    use {
+        "utilyre/barbecue.nvim",
+        tag = "*",
+        requires = {
+            "SmiteshP/nvim-navic",
+            "nvim-tree/nvim-web-devicons", -- optional dependency
+        },
+    }
 
     -- nvim-tree
     use { "tpope/vim-vinegar" }
