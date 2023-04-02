@@ -68,6 +68,7 @@ packer.startup(function(use)
         run = ":TSUpdate"
     }
     use "nvim-treesitter/playground"
+    use 'nvim-treesitter/nvim-treesitter-context'
 
     -- lsp and diagnostics
     use {
