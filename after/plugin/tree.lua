@@ -19,9 +19,9 @@ tree.setup {
         number = true,
         relativenumber = true,
         width = 30,
-        hide_root_folder = true,
     },
     renderer = {
+        root_folder_label = false,
         indent_width = 1,
         indent_markers = {
             enable = true,
