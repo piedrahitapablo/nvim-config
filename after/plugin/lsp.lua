@@ -1,4 +1,4 @@
-local status, lsp = pcall(require, "lsp-zero")
+local status, lsp_zero = pcall(require, "lsp-zero")
 if (not status) then
     print('lsp-zero is not installed')
     return
@@ -16,16 +16,34 @@ if (not status) then
     return
 end
 
-lsp.preset("recommended")
+lsp_zero.preset("recommended")
 
-lsp.ensure_installed({
-    'tsserver',
+lsp_zero.ensure_installed({
+    'spectral',
+    'prismals',
+    -- 'black',
+    'cssls',
+    'docker_compose_language_service',
+    'dockerls',
+    'eslint',
+    'gopls',
+    'html',
+    -- 'json_ls',
     'lua_ls',
+    'marksman',
+    -- 'prettierd',
+    'pyright',
     'rust_analyzer',
+    -- 'stylua',
+    'tailwindcss',
+    'taplo',
+    'terraformls',
+    'tflint',
+    'tsserver',
 })
 
 -- Fix Undefined global 'vim'
-lsp.configure('lua_ls', {
+lsp_zero.configure('lua_ls', {
     settings = {
         Lua = {
             diagnostics = {
@@ -36,7 +54,7 @@ lsp.configure('lua_ls', {
 })
 
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
-local cmp_mappings = lsp.defaults.cmp_mappings({
+local cmp_mappings = lsp_zero.defaults.cmp_mappings({
     ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
     ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
     ['<C-y>'] = cmp.mapping.confirm({ select = true }),
@@ -47,11 +65,11 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
 cmp_mappings['<Tab>'] = nil
 cmp_mappings['<S-Tab>'] = nil
 
-lsp.setup_nvim_cmp({
+lsp_zero.setup_nvim_cmp({
     mapping = cmp_mappings
 })
 
-lsp.set_preferences({
+lsp_zero.set_preferences({
     sign_icons = {
         error = 'E',
         warn = 'W',
@@ -60,7 +78,7 @@ lsp.set_preferences({
     }
 })
 
-local null_opts = lsp.build_options('null-ls', {
+local null_opts = lsp_zero.build_options('null-ls', {
     -- uncomment this to enable format on save
     -- on_attach = function(client)
     --   if client.resolved_capabilities.document_formatting then
@@ -76,11 +94,6 @@ local null_opts = lsp.build_options('null-ls', {
 null_ls.setup({
     on_attach = null_opts.on_attach,
     sources = {
-        -- null_ls.builtins.code_actions.eslint_d,
-        -- null_ls.builtins.code_actions.gitsigns,
-        -- null_ls.builtins.formatting.prettierd,
-        -- null_ls.builtins.formatting.prismaFmt,
-        -- null_ls.builtins.formatting.terraform_fmt,
         null_ls.builtins.formatting.black,
         null_ls.builtins.formatting.trim_newlines,
         null_ls.builtins.formatting.trim_whitespace
@@ -88,7 +101,7 @@ null_ls.setup({
 })
 
 -- https://github.com/neovim/nvim-lspconfig/wiki/UI-customization
-lsp.on_attach(function(client, bufnr)
+lsp_zero.on_attach(function(client, bufnr)
     local opts = { buffer = bufnr, remap = false }
 
     vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
@@ -133,10 +146,10 @@ end)
 vim.keymap.set("n", "<leader>lrr", "<cmd>LspRestart<cr>")
 vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format)
 
-lsp.setup()
+lsp_zero.setup()
 
 vim.diagnostic.config({
-    virtual_text = true,
+    virtual_text = false,
     underline = true,
     update_in_insert = false,
 })

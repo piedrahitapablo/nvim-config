@@ -14,7 +14,7 @@ ts.setup {
         "lua",
         "vim",
         "c",
-        "help",
+        -- "help",
         "rust"
     },
 
