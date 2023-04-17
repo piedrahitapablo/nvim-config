@@ -1,5 +1,3 @@
-vim.g.mapleader = " "
-
 -- make home key go to the first non-empty char
 vim.keymap.set("n", "<Home>", "^")
 vim.keymap.set("v", "<Home>", "^")

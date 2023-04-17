@@ -1,3 +1,3 @@
-require("piedra.packer")
+require("piedra.lazy")
 require("piedra.remap")
 require("piedra.set")
