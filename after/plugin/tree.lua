@@ -4,6 +4,12 @@ if (not status) then
     return
 end
 
+local status, api = pcall(require, "nvim-tree.api")
+if not status then
+    print("nvim-tree.api is not installed")
+    return
+end
+
 tree.setup {
     disable_netrw = true,
     hijack_netrw = true,
@@ -55,6 +61,10 @@ tree.setup {
         enable = true,
     }
 }
+
+api.events.subscribe(api.events.Event.FileCreated, function(file)
+    vim.cmd("edit " .. file.fname)
+end)
 
 vim.keymap.set("n", "<leader>pv", vim.cmd.NvimTreeFindFile)
 vim.keymap.set("n", "<leader>pb", vim.cmd.NvimTreeFindFileToggle)
