@@ -48,6 +48,9 @@ vim.keymap.set("v", "<leader>ss", [[/\<<C-r><C-w>\>]])
 -- replace word under cursor
 vim.keymap.set("n", "<leader>sr", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 -- replace selection (it's broken for strings that include escape sequences)
+-- the "y" at the start is for yanking the selection and then paste it using <C-r>"
 vim.keymap.set("v", "<leader>sr", 'y:%s/<C-r>"/<C-r>"/gI<Left><Left><Left>')
-
--- vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+-- replace word under cursor with confirmation starting from the current line
+vim.keymap.set("n", "<leader>sc", [[:,$s/\<<C-r><C-w>\>/<C-r><C-w>/gIc|1,''-&&<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>]])
+-- replace selection with confirmation starting from the current line (it's broken for strings that include escape sequences)
+vim.keymap.set("v", "<leader>sc", 'y:,$s/<C-r>"/<C-r>"/gIc|1,\'\'-&&<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>')
