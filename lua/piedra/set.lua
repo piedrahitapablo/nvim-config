@@ -4,8 +4,8 @@ vim.opt.relativenumber = false
 
 -- show indentation and blank lines
 vim.opt.list = true
-vim.opt.listchars:append "space:⋅"
-vim.opt.listchars:append "trail:⋅"
+vim.opt.listchars:append("space:⋅")
+vim.opt.listchars:append("trail:⋅")
 -- vim.opt.listchars:append "eol:↴"
 
 -- tabs
@@ -19,7 +19,7 @@ vim.opt.smartindent = true
 vim.opt.wrap = false
 
 -- code folding
-vim.opt.foldcolumn = '1'
+vim.opt.foldcolumn = "1"
 vim.opt.foldlevel = 99
 vim.opt.foldlevelstart = -1
 vim.opt.foldenable = true

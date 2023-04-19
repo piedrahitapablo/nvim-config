@@ -1,21 +1,12 @@
-local status, tree = pcall(require, "nvim-tree")
-if (not status) then
-    print("nvim-tree is not installed")
-    return
-end
+local api = require("nvim-tree.api")
+local tree = require("nvim-tree")
 
-local status, api = pcall(require, "nvim-tree.api")
-if not status then
-    print("nvim-tree.api is not installed")
-    return
-end
-
-tree.setup {
+tree.setup({
     disable_netrw = true,
     hijack_netrw = true,
     hijack_cursor = true,
     view = {
-        side = 'left',
+        side = "left",
         number = true,
         relativenumber = true,
         width = 30,
@@ -59,8 +50,8 @@ tree.setup {
     },
     modified = {
         enable = true,
-    }
-}
+    },
+})
 
 api.events.subscribe(api.events.Event.FileCreated, function(file)
     vim.cmd("edit " .. file.fname)

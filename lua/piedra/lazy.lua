@@ -1,13 +1,13 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
+    vim.fn.system({
+        "git",
+        "clone",
+        "--filter=blob:none",
+        "https://github.com/folke/lazy.nvim.git",
+        "--branch=stable", -- latest stable release
+        lazypath,
+    })
 end
 vim.opt.rtp:prepend(lazypath)
 
@@ -49,8 +49,8 @@ lazy.setup({
         "nvim-telescope/telescope.nvim",
         tag = "0.1.1",
         dependencies = {
-            { "nvim-lua/plenary.nvim" }
-        }
+            { "nvim-lua/plenary.nvim" },
+        },
     },
 
     -- lualine
@@ -58,7 +58,7 @@ lazy.setup({
         "nvim-lualine/lualine.nvim",
         dependencies = {
             "nvim-tree/nvim-web-devicons", -- optional, for file icons
-        }
+        },
     },
     {
         "utilyre/barbecue.nvim",
@@ -92,22 +92,22 @@ lazy.setup({
         branch = "v2.x",
         dependencies = {
             -- LSP Support
-            { "neovim/nvim-lspconfig" },             -- Required
-            { "williamboman/mason.nvim" },           -- Optional
+            { "neovim/nvim-lspconfig" }, -- Required
+            { "williamboman/mason.nvim" }, -- Optional
             { "williamboman/mason-lspconfig.nvim" }, -- Optional
 
             -- Autocompletion
-            { "hrsh7th/nvim-cmp" },         -- Required
-            { "hrsh7th/cmp-nvim-lsp" },     -- Required
-            { "hrsh7th/cmp-buffer" },       -- Optional
-            { "hrsh7th/cmp-path" },         -- Optional
+            { "hrsh7th/nvim-cmp" }, -- Required
+            { "hrsh7th/cmp-nvim-lsp" }, -- Required
+            { "hrsh7th/cmp-buffer" }, -- Optional
+            { "hrsh7th/cmp-path" }, -- Optional
             { "saadparwaiz1/cmp_luasnip" }, -- Optional
-            { "hrsh7th/cmp-nvim-lua" },     -- Optional
+            { "hrsh7th/cmp-nvim-lua" }, -- Optional
 
             -- Snippets
-            { "L3MON4D3/LuaSnip" },             -- Required
+            { "L3MON4D3/LuaSnip" }, -- Required
             { "rafamadriz/friendly-snippets" }, -- Optional
-        }
+        },
     },
     {
         "jose-elias-alvarez/null-ls.nvim",
@@ -132,7 +132,7 @@ lazy.setup({
     -- tabnine
     {
         "codota/tabnine-nvim",
-        build = "./dl_binaries.sh"
+        build = "./dl_binaries.sh",
     },
 
     { "mbbill/undotree" },
@@ -152,6 +152,8 @@ lazy.setup({
     -- previews
     {
         "iamcco/markdown-preview.nvim",
-        build = function() vim.fn["mkdp#util#install"]() end,
+        build = function()
+            vim.fn["mkdp#util#install"]()
+        end,
     },
 })
