@@ -25,18 +25,22 @@ lazy.setup({
     {
         "jaredgorski/spacecamp",
         name = "spacecamp",
+        lazy = true,
     },
     {
         "catppuccin/nvim",
-        name = "catppuccin"
+        name = "catppuccin",
+        lazy = true,
     },
     {
         "Shatur/neovim-ayu",
-        name = "ayu"
+        name = "ayu",
+        lazy = true,
     },
     {
         "rose-pine/neovim",
-        name = "rose-pine"
+        name = "rose-pine",
+        lazy = true,
     },
     "navarasu/onedark.nvim",
 
