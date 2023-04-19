@@ -109,7 +109,14 @@ lazy.setup({
         "jose-elias-alvarez/null-ls.nvim",
         dependencies = { "nvim-lua/plenary.nvim" },
     },
-    { "MunifTanjim/prettier.nvim" },
+    {
+        "jay-babu/mason-null-ls.nvim",
+        event = { "BufReadPre", "BufNewFile" },
+        dependencies = {
+            "williamboman/mason.nvim",
+            "jose-elias-alvarez/null-ls.nvim",
+        },
+    },
     {
         "folke/trouble.nvim",
         dependencies = "nvim-tree/nvim-web-devicons",

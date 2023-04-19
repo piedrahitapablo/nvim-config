@@ -10,6 +10,12 @@ if (not status) then
     return
 end
 
+local status, mason_null_ls = pcall(require, 'mason-null-ls')
+if (not status) then
+    print('null-ls is not installed')
+    return
+end
+
 local status, null_ls = pcall(require, 'null-ls')
 if (not status) then
     print('null-ls is not installed')
@@ -21,20 +27,17 @@ lsp_zero.preset("recommended")
 lsp_zero.ensure_installed({
     'spectral',
     'prismals',
-    -- 'black',
     'cssls',
     'docker_compose_language_service',
     'dockerls',
-    'eslint',
+    -- this server is not working
+    -- 'eslint',
     'gopls',
     'html',
-    -- 'json_ls',
     'lua_ls',
     'marksman',
-    -- 'prettierd',
     'pyright',
     'rust_analyzer',
-    -- 'stylua',
     'tailwindcss',
     'taplo',
     'terraformls',
@@ -91,13 +94,20 @@ local null_opts = lsp_zero.build_options('null-ls', {
     -- end
 })
 
+mason_null_ls.setup({
+    ensure_installed = {
+        'black',
+        'eslint_d',
+        'json_ls',
+        'prettierd',
+        'stylua',
+    },
+    automatic_installation = false,
+    handlers = {},
+})
 null_ls.setup({
     on_attach = null_opts.on_attach,
-    sources = {
-        null_ls.builtins.formatting.black,
-        null_ls.builtins.formatting.trim_newlines,
-        null_ls.builtins.formatting.trim_whitespace
-    }
+    sources = {}
 })
 
 -- https://github.com/neovim/nvim-lspconfig/wiki/UI-customization
