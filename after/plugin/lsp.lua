@@ -88,7 +88,11 @@ mason_null_ls.setup({
 })
 null_ls.setup({
     on_attach = null_opts.on_attach,
-    sources = {},
+    sources = {
+        -- null_ls.builtins.code_actions.eslint,
+        -- null_ls.builtins.diagnostics.eslint,
+        -- null_ls.builtins.formatting.eslint,
+    },
 })
 
 -- https://github.com/neovim/nvim-lspconfig/wiki/UI-customization
@@ -159,7 +163,9 @@ lsp_zero.on_attach(function(client, bufnr)
 end)
 
 vim.keymap.set("n", "<leader>lrr", "<cmd>LspRestart<cr>")
-vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format)
+vim.keymap.set("n", "<leader>lf", function()
+    vim.lsp.buf.format({ timeout_ms = 3000 })
+end)
 
 lsp_zero.setup()
 
