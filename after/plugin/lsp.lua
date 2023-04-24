@@ -2,6 +2,7 @@ local cmp = require("cmp")
 local lsp_zero = require("lsp-zero")
 local mason_null_ls = require("mason-null-ls")
 local null_ls = require("null-ls")
+local telescope_status, telescope = pcall(require, "telescope.builtin")
 
 lsp_zero.preset("recommended")
 
@@ -100,7 +101,11 @@ lsp_zero.on_attach(function(client, bufnr)
     local opts = { buffer = bufnr, remap = false }
 
     vim.keymap.set("n", "gd", function()
-        vim.lsp.buf.definition()
+        if not telescope_status then
+            vim.lsp.buf.definition()
+        else
+            telescope.lsp_definitions()
+        end
     end, opts)
     vim.keymap.set("n", "K", function()
         vim.lsp.buf.hover()
@@ -121,7 +126,11 @@ lsp_zero.on_attach(function(client, bufnr)
         vim.lsp.buf.code_action()
     end, opts)
     vim.keymap.set("n", "<leader>vrr", function()
-        vim.lsp.buf.references()
+        if not telescope_status then
+            vim.lsp.buf.references()
+        else
+            telescope.lsp_references()
+        end
     end, opts)
     vim.keymap.set("n", "<leader>vrn", function()
         vim.lsp.buf.rename()
