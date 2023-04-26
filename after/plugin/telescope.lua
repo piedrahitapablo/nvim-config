@@ -31,6 +31,13 @@ telescope.setup({
             },
         },
     },
+    extensions = {
+        undo = {
+            layout_config = {
+                preview_width = 0.7,
+            },
+        },
+    },
 })
 
 vim.keymap.set("n", "<leader>tf", builtin.find_files, {})
@@ -49,3 +56,6 @@ session_lens.setup({})
 telescope.load_extension("session-lens")
 
 vim.keymap.set("n", "<leader>sl", session_lens.search_session)
+
+telescope.load_extension("undo")
+vim.keymap.set("n", "<leader>u", telescope.extensions.undo.undo)

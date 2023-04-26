@@ -144,6 +144,7 @@ lazy.setup({
     },
 
     { "mbbill/undotree" },
+    { "debugloop/telescope-undo.nvim" },
 
     -- git
     { "tpope/vim-fugitive" },
