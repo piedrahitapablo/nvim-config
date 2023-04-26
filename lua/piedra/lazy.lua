@@ -52,6 +52,7 @@ lazy.setup({
             { "nvim-lua/plenary.nvim" },
         },
     },
+    { "smartpde/telescope-recent-files" },
 
     -- lualine
     {

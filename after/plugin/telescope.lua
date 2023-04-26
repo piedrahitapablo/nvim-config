@@ -13,6 +13,9 @@ telescope.setup({
     pickers = {
         find_files = {
             find_command = { "rg", "--files", "--hidden", "-g", "!.git" },
+            layout_config = {
+                preview_width = 0.6,
+            },
         },
         live_grep = {
             additional_args = function()
@@ -37,6 +40,12 @@ telescope.setup({
                 preview_width = 0.7,
             },
         },
+        recent_files = {
+            only_cwd = true,
+            layout_config = {
+                preview_width = 0.6,
+            },
+        },
     },
 })
 
@@ -59,3 +68,6 @@ vim.keymap.set("n", "<leader>sl", session_lens.search_session)
 
 telescope.load_extension("undo")
 vim.keymap.set("n", "<leader>u", telescope.extensions.undo.undo)
+
+telescope.load_extension("recent_files")
+vim.keymap.set("n", "<leader><leader>", telescope.extensions.recent_files.pick)
