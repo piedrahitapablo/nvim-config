@@ -3,6 +3,7 @@ local lsp_zero = require("lsp-zero")
 local mason_null_ls = require("mason-null-ls")
 local null_ls = require("null-ls")
 local telescope_status, telescope = pcall(require, "telescope.builtin")
+local typescript_status, typescript = pcall(require, "typescript")
 
 lsp_zero.preset("recommended")
 
@@ -93,6 +94,8 @@ null_ls.setup({
         -- null_ls.builtins.code_actions.eslint,
         -- null_ls.builtins.diagnostics.eslint,
         -- null_ls.builtins.formatting.eslint,
+        -- FIXME: find a good way to add this conditionally
+        require("typescript.extensions.null-ls.code-actions"),
     },
 })
 
@@ -176,7 +179,29 @@ vim.keymap.set("n", "<leader>lf", function()
     vim.lsp.buf.format({ timeout_ms = 3000 })
 end)
 
+if typescript_status then
+    lsp_zero.skip_server_setup({ "tsserver" })
+end
+
 lsp_zero.setup()
+
+if typescript_status then
+    typescript.setup({
+        server = {
+            on_attach = function(client, bufnr)
+                -- You can find more commands in the documentation:
+                -- https://github.com/jose-elias-alvarez/typescript.nvim#commands
+
+                vim.keymap.set(
+                    "n",
+                    "<leader>ci",
+                    "<cmd>TypescriptAddMissingImports<cr>",
+                    { buffer = bufnr }
+                )
+            end,
+        },
+    })
+end
 
 vim.diagnostic.config({
     virtual_text = false,

@@ -113,6 +113,7 @@ lazy.setup({
         "jose-elias-alvarez/null-ls.nvim",
         dependencies = { "nvim-lua/plenary.nvim" },
     },
+    { "jose-elias-alvarez/typescript.nvim" },
     {
         "jay-babu/mason-null-ls.nvim",
         event = { "BufReadPre", "BufNewFile" },
