@@ -78,6 +78,12 @@ lazy.setup({
             "nvim-tree/nvim-web-devicons", -- optional, for file icons
         },
     },
+    {
+        "X3eRo0/dired.nvim",
+        dependencies = {
+            "MunifTanjim/nui.nvim",
+        },
+    },
 
     -- auto save sessions
     { "rmagatti/auto-session" },
