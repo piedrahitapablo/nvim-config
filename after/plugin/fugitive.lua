@@ -1,10 +1,10 @@
 local function ShowFugitive()
-    vim.cmd([[
-        vertical Git
-        wincmd L
-        vertical resize 70
-        setlocal winfixwidth
-    ]])
+    -- vim.cmd([[
+    --     vertical Git
+    --     wincmd L
+    --     vertical resize 70
+    -- ]])
+    vim.cmd([[tab Git]])
 end
 
 -- TODO: make this a toggle
