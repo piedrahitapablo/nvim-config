@@ -1,4 +1,5 @@
 local builtin = require("telescope.builtin")
+local session_lens = require("session-lens")
 local telescope = require("telescope")
 
 telescope.setup({
@@ -43,3 +44,8 @@ vim.keymap.set("n", "<leader>tgf", builtin.git_files, {})
 vim.keymap.set("n", "<leader>tgc", builtin.git_commits, {})
 vim.keymap.set("n", "<leader>tgb", builtin.git_bcommits, {})
 vim.keymap.set("n", "<leader>tgs", builtin.git_status, {})
+
+session_lens.setup({})
+telescope.load_extension("session-lens")
+
+vim.keymap.set("n", "<leader>sl", session_lens.search_session)

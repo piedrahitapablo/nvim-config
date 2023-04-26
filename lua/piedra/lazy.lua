@@ -80,6 +80,13 @@ lazy.setup({
 
     -- auto save sessions
     { "rmagatti/auto-session" },
+    {
+        "rmagatti/session-lens",
+        dependencies = {
+            "rmagatti/auto-session",
+            "nvim-telescope/telescope.nvim",
+        },
+    },
 
     -- treesitter
     "nvim-treesitter/nvim-treesitter",
