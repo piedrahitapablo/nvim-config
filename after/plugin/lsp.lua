@@ -1,5 +1,6 @@
 local cmp = require("cmp")
 local lsp_zero = require("lsp-zero")
+local lspconfig = require("lspconfig")
 local mason_null_ls = require("mason-null-ls")
 local null_ls = require("null-ls")
 local telescope_status, telescope = pcall(require, "telescope.builtin")
@@ -26,17 +27,6 @@ lsp_zero.ensure_installed({
     "terraformls",
     "tflint",
     "tsserver",
-})
-
--- Fix Undefined global 'vim'
-lsp_zero.configure("lua_ls", {
-    settings = {
-        Lua = {
-            diagnostics = {
-                globals = { "vim" },
-            },
-        },
-    },
 })
 
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
@@ -182,6 +172,8 @@ end)
 if typescript_status then
     lsp_zero.skip_server_setup({ "tsserver" })
 end
+
+lspconfig.lua_ls.setup(lsp_zero.nvim_lua_ls())
 
 lsp_zero.setup()
 
