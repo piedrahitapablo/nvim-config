@@ -19,12 +19,13 @@ vim.opt.smartindent = true
 vim.opt.wrap = false
 
 -- code folding
-vim.opt.foldcolumn = "1"
-vim.opt.foldlevel = 99
-vim.opt.foldlevelstart = -1
-vim.opt.foldenable = true
-vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+-- commented out in favor of ufo, see lsp.lua
+-- vim.opt.foldcolumn = "1"
+-- vim.opt.foldlevel = 99
+-- vim.opt.foldlevelstart = -1
+-- vim.opt.foldenable = true
+-- vim.opt.foldmethod = "expr"
+-- vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 
 -- title
 vim.opt.title = true

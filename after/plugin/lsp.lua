@@ -5,6 +5,7 @@ local mason_null_ls = require("mason-null-ls")
 local null_ls = require("null-ls")
 local telescope_status, telescope = pcall(require, "telescope.builtin")
 local typescript_status, typescript = pcall(require, "typescript")
+local ufo_status, ufo = pcall(require, "ufo")
 
 lsp_zero.preset("recommended")
 
@@ -174,6 +175,30 @@ if typescript_status then
 end
 
 lspconfig.lua_ls.setup(lsp_zero.nvim_lua_ls())
+
+if ufo_status then
+    vim.o.foldcolumn = "1"
+    vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
+    vim.o.foldlevelstart = 99
+    vim.o.foldenable = true
+
+    -- Using ufo provider need remap `zR` and `zM`.
+    vim.keymap.set("n", "zR", ufo.openAllFolds)
+    vim.keymap.set("n", "zM", ufo.closeAllFolds)
+
+    ufo.setup()
+
+    lsp_zero.set_server_config({
+        capabilities = {
+            textDocument = {
+                foldingRange = {
+                    dynamicRegistration = false,
+                    lineFoldingOnly = true,
+                },
+            },
+        },
+    })
+end
 
 lsp_zero.setup()
 

@@ -140,6 +140,10 @@ lazy.setup({
         "folke/trouble.nvim",
         dependencies = "nvim-tree/nvim-web-devicons",
     },
+    {
+        "kevinhwang91/nvim-ufo",
+        dependencies = "kevinhwang91/promise-async",
+    },
 
     -- copilot
     -- "github/copilot.vim",
