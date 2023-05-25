@@ -14,6 +14,8 @@ treesitter.setup({
         "c",
         -- "help",
         "rust",
+        -- needed to highlight TODOs and FIXMEs
+        "comment",
     },
     sync_install = false,
     auto_install = true,
