@@ -84,6 +84,11 @@ lazy.setup({
             "MunifTanjim/nui.nvim",
         },
     },
+    {
+        "stevearc/oil.nvim",
+        opts = {},
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+    },
 
     -- auto save sessions
     { "rmagatti/auto-session" },
