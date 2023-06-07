@@ -6,10 +6,10 @@ tree.setup({
     hijack_netrw = true,
     hijack_cursor = true,
     view = {
-        side = "left",
+        side = "right",
         number = true,
         relativenumber = true,
-        width = 30,
+        width = 60,
     },
     renderer = {
         root_folder_label = false,
