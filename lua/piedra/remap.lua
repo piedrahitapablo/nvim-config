@@ -70,3 +70,6 @@ vim.keymap.set(
 -- if using other so, open needs to be changed
 -- FIXME: probably needs to be improved, it doesn't work in some cases
 vim.keymap.set("n", "gx", ":silent !open <C-r><C-a><CR>")
+
+-- select pasted text
+vim.keymap.set("n", "gp", "`[v`]")
