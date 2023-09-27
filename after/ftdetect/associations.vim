@@ -10,3 +10,6 @@ au BufRead,BufNewFile Appfile           setfiletype ruby
 au BufRead,BufNewFile Fastfile          setfiletype ruby
 au BufRead,BufNewFile Matchfile         setfiletype ruby
 au BufRead,BufNewFile Pipfile           setfiletype toml
+
+" this is a workaround for https://github.com/neovim/nvim-lspconfig/issues/2685
+au BufRead,BufNewFile *.tfvars          setfiletype terraform
