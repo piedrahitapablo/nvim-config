@@ -1,9 +1,9 @@
-local blankline = require("indent_blankline")
+local blankline = require("ibl")
 
 blankline.setup({
-    space_char_blankline = " ",
-    use_treesitter = true,
-    use_treesitter_scope = true,
-    show_current_context = true,
-    show_current_context_start = true,
+    scope = {
+        enabled = false,
+        -- show_start = true,
+        -- show_end = false,
+    },
 })

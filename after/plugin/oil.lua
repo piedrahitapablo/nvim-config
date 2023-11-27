@@ -31,4 +31,5 @@ oil.setup({
     },
 })
 
-vim.keymap.set("n", "<leader>po", ":Oil<CR>")
+vim.keymap.set("n", "<leader>pb", string.format(":Oil %s<CR>", vim.fn.getcwd()))
+vim.keymap.set("n", "<leader>pv", ":Oil<CR>")

@@ -47,7 +47,7 @@ lazy.setup({
     -- telescope
     {
         "nvim-telescope/telescope.nvim",
-        tag = "0.1.1",
+        tag = "0.1.4",
         dependencies = {
             { "nvim-lua/plenary.nvim" },
         },
@@ -71,19 +71,13 @@ lazy.setup({
     },
 
     -- nvim-tree
-    { "tpope/vim-vinegar" },
-    {
-        "nvim-tree/nvim-tree.lua",
-        dependencies = {
-            "nvim-tree/nvim-web-devicons", -- optional, for file icons
-        },
-    },
-    {
-        "X3eRo0/dired.nvim",
-        dependencies = {
-            "MunifTanjim/nui.nvim",
-        },
-    },
+    -- { "tpope/vim-vinegar" },
+    -- {
+    --     "nvim-tree/nvim-tree.lua",
+    --     dependencies = {
+    --         "nvim-tree/nvim-web-devicons", -- optional, for file icons
+    --     },
+    -- },
     {
         "stevearc/oil.nvim",
         opts = {},
