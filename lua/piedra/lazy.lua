@@ -171,7 +171,13 @@ lazy.setup({
     -- previews
     {
         "iamcco/markdown-preview.nvim",
-        run = function()
+        cmd = {
+            "MarkdownPreviewToggle",
+            "MarkdownPreview",
+            "MarkdownPreviewStop",
+        },
+        ft = { "markdown" },
+        build = function()
             vim.fn["mkdp#util#install"]()
         end,
     },
