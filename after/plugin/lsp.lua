@@ -10,18 +10,18 @@ local ufo_status, ufo = pcall(require, "ufo")
 lsp_zero.preset("recommended")
 
 lsp_zero.ensure_installed({
-    "spectral",
-    "prismals",
     "cssls",
     "docker_compose_language_service",
     "dockerls",
-    -- this server is not working
-    -- 'eslint',
+    "eslint",
     "gopls",
     "html",
+    "jsonls",
     "lua_ls",
     "marksman",
+    "prismals",
     "pyright",
+    "ruff_lsp",
     "rust_analyzer",
     "tailwindcss",
     "taplo",
@@ -71,9 +71,13 @@ local null_opts = lsp_zero.build_options("null-ls", {
 mason_null_ls.setup({
     ensure_installed = {
         "black",
-        "eslint_d",
-        "json_ls",
-        "prettierd",
+        -- eslint should be preferred since its more efficient
+        -- "eslint_d",
+        "mypy",
+        "prettier",
+        -- prettier should be preferred since its more efficient
+        -- "prettierd",
+        "ruff",
         "stylua",
     },
     automatic_installation = false,
@@ -82,9 +86,10 @@ mason_null_ls.setup({
 null_ls.setup({
     on_attach = null_opts.on_attach,
     sources = {
-        -- null_ls.builtins.code_actions.eslint,
-        -- null_ls.builtins.diagnostics.eslint,
-        -- null_ls.builtins.formatting.eslint,
+        null_ls.builtins.code_actions.eslint,
+        null_ls.builtins.diagnostics.eslint,
+        null_ls.builtins.formatting.eslint,
+        null_ls.builtins.formatting.prettier,
         -- FIXME: find a good way to add this conditionally
         require("typescript.extensions.null-ls.code-actions"),
     },
@@ -208,13 +213,17 @@ if typescript_status then
             on_attach = function(client, bufnr)
                 -- You can find more commands in the documentation:
                 -- https://github.com/jose-elias-alvarez/typescript.nvim#commands
-
                 vim.keymap.set(
                     "n",
                     "<leader>ci",
                     "<cmd>TypescriptAddMissingImports<cr>",
                     { buffer = bufnr }
                 )
+
+                -- https://oneofone.dev/post/neovim-biome-setup/
+                -- this is important, otherwise tsserver will format ts/js
+                -- files which we *really* don't want.
+                client.server_capabilities.documentFormattingProvider = false
             end,
         },
     })
