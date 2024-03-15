@@ -73,3 +73,6 @@ vim.keymap.set("n", "gx", ":silent !open <C-r><C-a><CR>")
 
 -- select pasted text
 vim.keymap.set("n", "gp", "`[v`]")
+
+-- close all buffers but the current
+vim.keymap.set("n", "<leader>cab", ":%bd|e#<CR>")
