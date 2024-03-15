@@ -5,6 +5,5 @@ vim.o.sessionoptions =
 
 session.setup({
     log_level = "error",
-    pre_save_cmds = { "NvimTreeClose" },
     auto_session_suppress_dirs = { "~/", "~/code", "~/Downloads", "/" },
 })

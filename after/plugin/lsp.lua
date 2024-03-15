@@ -86,10 +86,10 @@ mason_null_ls.setup({
 null_ls.setup({
     on_attach = null_opts.on_attach,
     sources = {
-        null_ls.builtins.code_actions.eslint,
-        null_ls.builtins.diagnostics.eslint,
-        null_ls.builtins.formatting.eslint,
-        null_ls.builtins.formatting.prettier,
+        -- null_ls.builtins.code_actions.eslint,
+        -- null_ls.builtins.diagnostics.eslint,
+        -- null_ls.builtins.formatting.eslint,
+        -- null_ls.builtins.formatting.prettier,
         -- FIXME: find a good way to add this conditionally
         require("typescript.extensions.null-ls.code-actions"),
     },
@@ -219,11 +219,6 @@ if typescript_status then
                     "<cmd>TypescriptAddMissingImports<cr>",
                     { buffer = bufnr }
                 )
-
-                -- https://oneofone.dev/post/neovim-biome-setup/
-                -- this is important, otherwise tsserver will format ts/js
-                -- files which we *really* don't want.
-                client.server_capabilities.documentFormattingProvider = false
             end,
         },
     })

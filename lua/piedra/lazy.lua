@@ -139,18 +139,26 @@ lazy.setup({
         "folke/trouble.nvim",
         dependencies = "nvim-tree/nvim-web-devicons",
     },
-    {
-        "kevinhwang91/nvim-ufo",
-        dependencies = "kevinhwang91/promise-async",
-    },
+    -- TODO: find a way to make this work properly
+    -- code folds
+    -- {
+    --     "kevinhwang91/nvim-ufo",
+    --     dependencies = "kevinhwang91/promise-async",
+    -- },
 
     -- copilot
     -- "github/copilot.vim",
 
     -- tabnine
+    -- {
+    --     "codota/tabnine-nvim",
+    --     build = "./dl_binaries.sh",
+    -- },
+
+    -- codeium
     {
-        "codota/tabnine-nvim",
-        build = "./dl_binaries.sh",
+        "Exafunction/codeium.vim",
+        event = "BufEnter",
     },
 
     { "mbbill/undotree" },
@@ -159,6 +167,7 @@ lazy.setup({
     -- git
     { "tpope/vim-fugitive" },
     { "lewis6991/gitsigns.nvim" },
+    { "akinsho/git-conflict.nvim", version = "v1.3.0", config = true },
 
     { "lukas-reineke/indent-blankline.nvim" },
 
