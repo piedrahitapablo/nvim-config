@@ -6,7 +6,7 @@ treesitter.setup({
         "toml",
         "json",
         "yaml",
-        "swift",
+        -- "swift",
         "css",
         "html",
         "lua",
@@ -26,9 +26,6 @@ treesitter.setup({
     indent = {
         enable = true,
         disable = {},
-    },
-    autotag = {
-        enable = true,
     },
 })
 
