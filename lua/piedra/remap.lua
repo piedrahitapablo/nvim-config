@@ -65,12 +65,6 @@ vim.keymap.set(
     "y:,$s/<C-r>\"/<C-r>\"/gIc|1,''-&&<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>"
 )
 
--- since netrw is disabled, get the gx functionality back
--- https://stackoverflow.com/a/63352904/8133868
--- if using other so, open needs to be changed
--- FIXME: probably needs to be improved, it doesn't work in some cases
-vim.keymap.set("n", "gx", ":silent !open <C-r><C-a><CR>")
-
 -- select pasted text
 vim.keymap.set("n", "gp", "`[v`]")
 
