@@ -139,6 +139,12 @@ mason_lspconfig.setup({
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
 local cmp_format = lsp_zero.cmp_format()
 cmp.setup({
+    sources = {
+        { name = "path" },
+        { name = "nvim_lsp" },
+        -- { name = "luasnip", keyword_length = 2 },
+        { name = "buffer", keyword_length = 3 },
+    },
     formatting = cmp_format,
     mapping = lsp_zero.defaults.cmp_mappings({
         ["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
@@ -250,6 +256,13 @@ if typescript_status then
                     "n",
                     "<leader>tmu",
                     "<cmd>TypescriptRemoveUnused<cr>",
+                    { buffer = bufnr }
+                )
+                vim.keymap.set(
+                    "n",
+                    "<leader>tmo",
+                    -- TODO: need to add extra command to run formatting again
+                    "<cmd>TypescriptOrganizeImports<cr>",
                     { buffer = bufnr }
                 )
             end,
