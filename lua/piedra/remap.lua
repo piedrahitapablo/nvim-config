@@ -43,6 +43,7 @@ vim.keymap.set("v", "<leader>d", '"_d')
 -- same as *
 vim.keymap.set("n", "<leader>ss", [[/\<<C-r><C-w>\>]])
 vim.keymap.set("v", "<leader>ss", [[/\<<C-r><C-w>\>]])
+
 -- replace word under cursor
 vim.keymap.set(
     "n",
@@ -64,6 +65,10 @@ vim.keymap.set(
     "<leader>sc",
     "y:,$s/<C-r>\"/<C-r>\"/gIc|1,''-&&<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>"
 )
+
+-- toggle
+vim.keymap.set("n", "<leader>kw", ":set wrap!<CR>")
+vim.keymap.set("n", "<leader>ksi", ":set smartindent!<CR>")
 
 -- select pasted text
 vim.keymap.set("n", "gp", "`[v`]")
