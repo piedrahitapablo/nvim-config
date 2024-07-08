@@ -176,18 +176,12 @@ lazy.setup({
 
     -- copilot
     -- "github/copilot.vim",
-
-    -- tabnine
-    -- {
-    --     "codota/tabnine-nvim",
-    --     build = "./dl_binaries.sh",
-    -- },
-
-    -- codeium
     {
-        "Exafunction/codeium.vim",
-        commit = "590d6eabc447088388a19459e2cb558fa1fd0c8c",
-        event = "BufEnter",
+        "supermaven-inc/supermaven-nvim",
+        commit = "ec7ae4c8190c96002aa466b1eb4a23aa51e24812",
+        config = function()
+            require("supermaven-nvim").setup({})
+        end,
     },
 
     -- undo
