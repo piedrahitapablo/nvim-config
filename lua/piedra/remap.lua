@@ -68,7 +68,8 @@ vim.keymap.set(
 
 -- toggle
 vim.keymap.set("n", "<leader>kw", ":set wrap!<CR>")
-vim.keymap.set("n", "<leader>ksi", ":set smartindent!<CR>")
+vim.keymap.set("n", "<leader>ki", ":set smartindent!<CR>")
+vim.keymap.set("n", "<leader>kr", ":set relativenumber!<CR>")
 
 -- select pasted text
 vim.keymap.set("n", "gp", "`[v`]")

@@ -1,6 +1,6 @@
 -- line numbers
 vim.opt.nu = true
-vim.opt.relativenumber = false
+vim.opt.relativenumber = true
 
 -- show indentation and blank lines
 vim.opt.list = true
