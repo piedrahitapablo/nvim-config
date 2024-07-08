@@ -6,6 +6,14 @@ telescope.setup({
     defaults = {
         layout_config = {
             prompt_position = "top",
+            width = {
+                0.9,
+                min = 250,
+            },
+            height = {
+                0.8,
+                min = 70,
+            }
         },
         prompt_prefix = "> ",
         sorting_strategy = "ascending",
@@ -54,6 +62,7 @@ vim.keymap.set("n", "<leader>ts", builtin.live_grep, {})
 vim.keymap.set("n", "<leader>ty", function()
     builtin.grep_string({ search = vim.fn.input("Grep > ") })
 end)
+vim.keymap.set("n", "<leader>t/", builtin.current_buffer_fuzzy_find, {})
 vim.keymap.set("n", "<leader>tb", builtin.buffers, {})
 vim.keymap.set("n", "<leader>td", builtin.diagnostics, {})
 vim.keymap.set("n", "<leader>tc", builtin.commands, {})
