@@ -50,6 +50,10 @@ lazy.setup({
         "navarasu/onedark.nvim",
         commit = "8e4b79b0e6495ddf29552178eceba1e147e6cecf",
     },
+    {
+        "levouh/tint.nvim",
+        commit = "02bd0527a315a80e4e25bb2dd7b6994fb0daae01",
+    },
 
     -- telescope
     {
@@ -198,6 +202,14 @@ lazy.setup({
     {
         "tpope/vim-fugitive",
         commit = "64d6cafb9dcbacce18c26d7daf617ebb96b273f3",
+    },
+    {
+        "ruifm/gitlinker.nvim",
+        commit = "cc59f732f3d043b626c8702cb725c82e54d35c25",
+        dependencies = "nvim-lua/plenary.nvim",
+        config = function()
+            require("gitlinker").setup({})
+        end,
     },
     {
         "lewis6991/gitsigns.nvim",
