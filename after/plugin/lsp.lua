@@ -185,7 +185,8 @@ mason_null_ls.setup({
         "black",
         -- eslint should be preferred since its more efficient
         -- "eslint_d",
-        "mypy",
+        -- pyright seems to be better than mypy
+        -- "mypy",
         "prettier",
         -- prettier should be preferred since its more efficient
         -- "prettierd",
