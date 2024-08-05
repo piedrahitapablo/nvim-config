@@ -14,6 +14,7 @@ treesitter.setup({
         "c",
         -- "help",
         "rust",
+        "graphql",
         -- needed to highlight TODOs and FIXMEs
         "comment",
     },
