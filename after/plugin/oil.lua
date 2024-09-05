@@ -1,6 +1,7 @@
 local oil = require("oil")
 
 oil.setup({
+    delete_to_trash = true,
     columns = {
         "icon",
         "permissions",
@@ -11,11 +12,11 @@ oil.setup({
         -- Show files and directories that start with "."
         show_hidden = true,
         -- This function defines what is considered a "hidden" file
-        is_hidden_file = function(name, bufnr)
+        is_hidden_file = function(name)
             return vim.startswith(name, ".")
         end,
         -- This function defines what will never be shown, even when `show_hidden` is set
-        is_always_hidden = function(name, bufnr)
+        is_always_hidden = function()
             return false
         end,
     },
