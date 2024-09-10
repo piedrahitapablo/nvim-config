@@ -9,6 +9,8 @@ local telescope_status, telescope = pcall(require, "telescope.builtin")
 local typescript_status, typescript = pcall(require, "typescript")
 local ufo_status, ufo = pcall(require, "ufo")
 
+vim.lsp.set_log_level("info")
+
 lsp_zero.preset("recommended")
 
 vim.api.nvim_create_autocmd("LspAttach", {
@@ -180,6 +182,16 @@ local null_opts = lsp_zero.build_options("null-ls", {
     -- end
 })
 
+function file_exists(name)
+    local f = io.open(name, "r")
+    if f ~= nil then
+        io.close(f)
+        return true
+    else
+        return false
+    end
+end
+
 mason_null_ls.setup({
     ensure_installed = {
         "black",
@@ -194,7 +206,23 @@ mason_null_ls.setup({
         "stylua",
     },
     automatic_installation = false,
-    handlers = {},
+    handlers = {
+        prettier = function(source_name, methods)
+            local project_local_bin = "node_modules/.bin/prettier"
+
+            if file_exists(project_local_bin) then
+                vim.lsp.log.info("Found local Prettier binary, using it")
+
+                null_ls.register(null_ls.builtins.formatting.prettier.with({
+                    command = project_local_bin,
+                }))
+                return
+            end
+
+            vim.lsp.log.info("Local Prettier binary not found, using global")
+            return mason_null_ls.default_setup(source_name, methods)
+        end,
+    },
 })
 null_ls.setup({
     on_attach = null_opts.on_attach,
