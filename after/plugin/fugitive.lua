@@ -28,11 +28,15 @@ vim.api.nvim_create_user_command("Gfa", "G fetch --all --prune --jobs=10", {
     force = false,
 })
 vim.api.nvim_create_user_command("Gp", function(opts)
-    vim.cmd(string.format("G push %s", opts.fargs[1]))
+    if opts.args == "" then
+        vim.cmd("G push")
+    else
+        vim.cmd(string.format("G push %s", opts.fargs[1]))
+    end
 end, {
     desc = "Git push to upstream",
     force = false,
-    nargs = 1,
+    nargs = "?",
 })
 vim.api.nvim_create_user_command("Gpsup", function()
     local branch = GitBranchName()
