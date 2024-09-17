@@ -182,58 +182,23 @@ local null_opts = lsp_zero.build_options("null-ls", {
     -- end
 })
 
-function file_exists(name)
-    local f = io.open(name, "r")
-    if f ~= nil then
-        io.close(f)
-        return true
-    else
-        return false
-    end
-end
-
+null_ls.setup({
+    on_attach = null_opts.on_attach,
+    sources = {
+        null_ls.builtins.formatting.prettier,
+        null_ls.builtins.diagnostics.ruff,
+        null_ls.builtins.formatting.ruff,
+        null_ls.builtins.formatting.stylua,
+        require("typescript.extensions.null-ls.code-actions"),
+    },
+})
 mason_null_ls.setup({
     ensure_installed = {
-        "black",
-        -- eslint should be preferred since its more efficient
-        -- "eslint_d",
-        -- pyright seems to be better than mypy
-        -- "mypy",
         "prettier",
-        -- prettier should be preferred since its more efficient
-        -- "prettierd",
         "ruff",
         "stylua",
     },
     automatic_installation = false,
-    handlers = {
-        prettier = function(source_name, methods)
-            local project_local_bin = "node_modules/.bin/prettier"
-
-            if file_exists(project_local_bin) then
-                vim.lsp.log.info("Found local Prettier binary, using it")
-
-                null_ls.register(null_ls.builtins.formatting.prettier.with({
-                    command = project_local_bin,
-                }))
-                return
-            end
-
-            vim.lsp.log.info("Local Prettier binary not found, using global")
-            return mason_null_ls.default_setup(source_name, methods)
-        end,
-    },
-})
-null_ls.setup({
-    on_attach = null_opts.on_attach,
-    sources = {
-        -- null_ls.builtins.code_actions.eslint,
-        -- null_ls.builtins.diagnostics.eslint,
-        -- null_ls.builtins.formatting.eslint,
-        -- null_ls.builtins.formatting.prettier,
-        -- FIXME: find a good way to add this conditionally
-        require("typescript.extensions.null-ls.code-actions"),
-    },
 })
 
 vim.keymap.set("n", "<leader>lrr", "<cmd>LspRestart<cr>")
