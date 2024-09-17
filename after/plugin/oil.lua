@@ -35,3 +35,4 @@ oil.setup({
 -- TODO: improve this keymap to work well with ssh
 vim.keymap.set("n", "<leader>pb", string.format(":Oil %s<CR>", vim.fn.getcwd()))
 vim.keymap.set("n", "<leader>pv", ":Oil<CR>")
+vim.keymap.set("n", "<leader>vpv", ":vertical Oil<CR>")
