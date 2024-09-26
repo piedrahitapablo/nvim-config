@@ -31,6 +31,9 @@ vim.keymap.set("n", "<PageUp>", "<PageUp>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
+-- paste while keeping the same text in the registry
+vim.keymap.set("x", "<leader>p", [["_dP]])
+
 -- yank into system clipboard
 vim.keymap.set("n", "<leader>y", '"+y')
 vim.keymap.set("v", "<leader>y", '"+y')
