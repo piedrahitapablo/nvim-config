@@ -27,6 +27,22 @@ vim.api.nvim_create_user_command("Gfa", "G fetch --all --prune --jobs=10", {
     desc = "Git fetch all",
     force = false,
 })
+
+vim.api.nvim_create_user_command("Gco", function(opts)
+    vim.cmd(string.format("G checkout %s", opts.fargs[1]))
+end, {
+    desc = "Git checkout",
+    force = false,
+    nargs = 1,
+})
+
+vim.api.nvim_create_user_command("Gl", function(opts)
+    vim.cmd("G pull")
+end, {
+    desc = "Git push to upstream",
+    force = false,
+})
+
 vim.api.nvim_create_user_command("Gp", function(opts)
     if opts.args == "" then
         vim.cmd("G push")
@@ -38,6 +54,7 @@ end, {
     force = false,
     nargs = "?",
 })
+
 vim.api.nvim_create_user_command("Gpsup", function()
     local branch = GitBranchName()
     if branch == nil or branch == "" then
@@ -49,6 +66,7 @@ end, {
     desc = "Git push to upstream",
     force = false,
 })
+
 vim.api.nvim_create_user_command("Grreb", function(opts)
     vim.cmd.Gfa()
     vim.cmd(string.format("G rebase -i origin/%s", opts.fargs[1]))
@@ -60,10 +78,15 @@ end, {
         return { "develop" }
     end,
 })
+
 vim.api.nvim_create_user_command("Gc", function(opts)
-    vim.cmd(string.format("G commit %s", opts.fargs[1]))
+    if opts.args == "" then
+        vim.cmd("G commit")
+    else
+        vim.cmd(string.format("G commit %s", opts.fargs[1]))
+    end
 end, {
     desc = "Git commit",
     force = false,
-    nargs = 1,
+    nargs = "?",
 })
