@@ -1,7 +1,7 @@
 local treesitter_context = require("treesitter-context")
 
 treesitter_context.setup({
-    enable = true,
+    enable = false,
     max_lines = 0,
     min_window_height = 0,
     line_numbers = true,
@@ -11,3 +11,5 @@ treesitter_context.setup({
     separator = nil,
     zindex = 20,
 })
+
+vim.keymap.set("n", "<leader>kts", "<cmd>TSContextToggle<cr>")
