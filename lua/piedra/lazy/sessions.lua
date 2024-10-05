@@ -1,20 +1,27 @@
+vim.o.sessionoptions =
+    "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+
 return {
     {
         "rmagatti/auto-session",
-        config = function()
-            vim.o.sessionoptions =
-                "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
-
-            local session = require("auto-session")
-            session.setup({
-                log_level = "error",
-                auto_session_suppress_dirs = {
-                    "~/",
-                    "~/code",
-                    "~/Downloads",
-                    "/",
-                },
-            })
-        end,
+        lazy = false,
+        keys = {
+            {
+                "<leader>sl",
+                "<cmd>SessionSearch<CR>",
+                desc = "Session search",
+            },
+        },
+        ---@module "auto-session"
+        ---@type AutoSession.Config
+        opts = {
+            log_level = "error",
+            suppressed_dirs = {
+                "~/",
+                "~/code",
+                "~/Downloads",
+                "/",
+            },
+        },
     },
 }

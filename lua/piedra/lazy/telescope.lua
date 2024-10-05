@@ -123,20 +123,4 @@ return {
             vim.keymap.set("n", "<leader>u", telescope.extensions.undo.undo)
         end,
     },
-    {
-        "rmagatti/session-lens",
-        dependencies = {
-            "rmagatti/auto-session",
-            "nvim-telescope/telescope.nvim",
-        },
-        config = function()
-            local session_lens = require("session-lens")
-            session_lens.setup({})
-
-            local telescope = require("telescope")
-            telescope.load_extension("session-lens")
-
-            vim.keymap.set("n", "<leader>sl", session_lens.search_session)
-        end,
-    },
 }
