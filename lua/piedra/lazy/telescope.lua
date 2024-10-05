@@ -1,7 +1,6 @@
 return {
     {
         "nvim-telescope/telescope.nvim",
-        tag = "0.1.8",
         dependencies = {
             { "nvim-lua/plenary.nvim" },
         },
@@ -106,7 +105,6 @@ return {
     },
     {
         "smartpde/telescope-recent-files",
-        commit = "6893cda11625254cc7dc2ea76e0a100c7deeb028",
         config = function()
             local telescope = require("telescope")
             telescope.load_extension("recent_files")
@@ -119,7 +117,6 @@ return {
     },
     {
         "debugloop/telescope-undo.nvim",
-        commit = "95b61c01ea3a4c9e8747731148e905bbcf0ccaee",
         config = function()
             local telescope = require("telescope")
             telescope.load_extension("undo")
@@ -128,7 +125,6 @@ return {
     },
     {
         "rmagatti/session-lens",
-        commit = "1b65d8e1bcd1836c5135cce118ba18d662a9dabd",
         dependencies = {
             "rmagatti/auto-session",
             "nvim-telescope/telescope.nvim",

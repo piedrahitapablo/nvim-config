@@ -1,7 +1,6 @@
 return {
     {
         "rmagatti/auto-session",
-        commit = "af2219b9fa99c1d7ac409bd9eac094c459d3f52d",
         config = function()
             vim.o.sessionoptions =
                 "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"

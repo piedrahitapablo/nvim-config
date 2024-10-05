@@ -24,7 +24,6 @@ end
 return {
     {
         "tpope/vim-fugitive",
-        commit = "64d6cafb9dcbacce18c26d7daf617ebb96b273f3",
         config = function()
             vim.keymap.set("n", "<leader>gs", FugitiveStatus)
             vim.keymap.set("n", "<leader>gb", function()
@@ -108,13 +107,11 @@ return {
     },
     {
         "ruifm/gitlinker.nvim",
-        commit = "cc59f732f3d043b626c8702cb725c82e54d35c25",
-        dependencies = "nvim-lua/plenary.nvim",
+        dependencies = { "nvim-lua/plenary.nvim" },
         opts = {},
     },
     {
         "lewis6991/gitsigns.nvim",
-        tag = "v0.9.0",
         config = function()
             local gitsigns = require("gitsigns")
 
@@ -137,7 +134,6 @@ return {
     },
     {
         "akinsho/git-conflict.nvim",
-        tag = "v2.0.0",
         config = true,
     },
 }

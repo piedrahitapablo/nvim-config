@@ -1,21 +1,13 @@
 return {
     {
         "lukas-reineke/indent-blankline.nvim",
-        tag = "v3.6.2",
         main = "ibl",
         enabled = false,
-        opts = {
-            enabled = false,
-            -- show_start = true,
-            -- show_end = false,
-        },
+        opts = {},
     },
     {
         "nvim-lualine/lualine.nvim",
-        commit = "0a5a66803c7407767b799067986b4dc3036e1983",
-        dependencies = {
-            "nvim-tree/nvim-web-devicons", -- optional, for file icons
-        },
+        dependencies = { "nvim-tree/nvim-web-devicons" },
         opts = {
             options = {
                 icons_enabled = true,
@@ -59,8 +51,8 @@ return {
                 lualine_c = {
                     {
                         "filename",
-                        file_status = true, -- displays file status (readonly status, modified status)
-                        path = 1, -- 0 = just filename, 1 = relative path, 2 = absolute path
+                        file_status = true,
+                        path = 1,
                     },
                 },
                 lualine_x = { "location" },
@@ -76,10 +68,9 @@ return {
     },
     {
         "utilyre/barbecue.nvim",
-        tag = "v1.2.0",
         dependencies = {
             "SmiteshP/nvim-navic",
-            "nvim-tree/nvim-web-devicons", -- optional dependency
+            "nvim-tree/nvim-web-devicons",
         },
         opts = {},
     },

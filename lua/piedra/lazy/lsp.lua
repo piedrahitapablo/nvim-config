@@ -21,18 +21,9 @@ return {
             { "rafamadriz/friendly-snippets" }, -- Optional
 
             -- Null-ls
-            {
-                "jose-elias-alvarez/null-ls.nvim",
-                commit = "0010ea927ab7c09ef0ce9bf28c2b573fc302f5a7",
-            },
-            {
-                "jay-babu/mason-null-ls.nvim",
-                tag = "v2.6.0",
-            },
-            {
-                "jose-elias-alvarez/typescript.nvim",
-                commit = "4de85ef699d7e6010528dcfbddc2ed4c2c421467",
-            },
+            { "jose-elias-alvarez/null-ls.nvim" },
+            { "jay-babu/mason-null-ls.nvim" },
+            { "jose-elias-alvarez/typescript.nvim" },
         },
         config = function()
             vim.lsp.set_log_level("info")
