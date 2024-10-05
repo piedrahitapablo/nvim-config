@@ -79,3 +79,10 @@ vim.keymap.set("n", "gp", "`[v`]")
 
 -- close all buffers but the current
 vim.keymap.set("n", "<leader>cab", ":%bd|e#<CR>")
+
+-- buffer resize utils
+vim.keymap.set(
+    "n",
+    "<leader>w80",
+    ':lua vim.cmd("vertical resize " .. math.floor(vim.o.columns * 0.8))<CR>'
+)
