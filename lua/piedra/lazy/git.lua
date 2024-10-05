@@ -47,7 +47,7 @@ return {
                 nargs = 1,
             })
 
-            vim.api.nvim_create_user_command("Gl", function(opts)
+            vim.api.nvim_create_user_command("Gl", function()
                 vim.cmd.Git("pull")
             end, {
                 desc = "Git push to upstream",
@@ -112,25 +112,44 @@ return {
     },
     {
         "lewis6991/gitsigns.nvim",
-        config = function()
-            local gitsigns = require("gitsigns")
+        opts = {
+            signcolumn = true,
+            numhl = true,
+            current_line_blame = true,
 
-            gitsigns.setup({
-                signcolumn = true,
-                numhl = true,
-            })
+            on_attach = function(bufnr)
+                local gitsigns = require("gitsigns")
 
-            vim.keymap.set("n", "<leader>ghp", gitsigns.preview_hunk_inline)
-            vim.keymap.set("n", "<leader>ghs", "<cmd>Gitsigns stage_hunk<cr>")
-            vim.keymap.set("v", "<leader>ghs", "<cmd>Gitsigns stage_hunk<cr>")
-            vim.keymap.set("n", "<leader>ghr", "<cmd>Gitsigns reset_hunk<cr>")
-            vim.keymap.set("v", "<leader>ghr", "<cmd>Gitsigns reset_hunk<cr>")
-            vim.keymap.set("n", "<leader>ghu", gitsigns.undo_stage_hunk)
-            vim.keymap.set("v", "<leader>ghu", gitsigns.undo_stage_hunk)
-            vim.keymap.set("n", "<leader>ghb", function()
-                gitsigns.blame_line({ full = true })
-            end)
-        end,
+                local opts = { buffer = bufnr }
+                vim.keymap.set("n", "<leader>hp", gitsigns.preview_hunk, opts)
+
+                vim.keymap.set("n", "<leader>hb", function()
+                    gitsigns.blame_line({ full = true })
+                end)
+                vim.keymap.set(
+                    "n",
+                    "<leader>htb",
+                    gitsigns.toggle_current_line_blame
+                )
+
+                vim.keymap.set("n", "<leader>hs", gitsigns.stage_hunk, opts)
+                vim.keymap.set("v", "<leader>hs", function()
+                    gitsigns.stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
+                end, opts)
+
+                vim.keymap.set(
+                    "n",
+                    "<leader>hu",
+                    gitsigns.undo_stage_hunk,
+                    opts
+                )
+
+                vim.keymap.set("n", "<leader>hd", gitsigns.diffthis, opts)
+                vim.keymap.set("n", "<leader>hD", function()
+                    gitsigns.diffthis("~")
+                end, opts)
+            end,
+        },
     },
     {
         "akinsho/git-conflict.nvim",
