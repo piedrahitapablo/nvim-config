@@ -190,7 +190,7 @@ return {
                     "jsonls",
                     "lua_ls",
                     "marksman",
-                    "prismals",
+                    -- "prismals",
                     "pyright",
                     "ruff_lsp",
                     "rust_analyzer",
@@ -198,11 +198,7 @@ return {
                     "taplo",
                     "terraformls",
                     "tflint",
-                    "tsserver",
-
-                    -- not really lsps
-                    "prettier",
-                    "stylua",
+                    -- "ts_ls",
                 },
                 handlers = {
                     function(server_name)
@@ -220,5 +216,31 @@ return {
                 },
             })
         end,
+    },
+    {
+        "pmizio/typescript-tools.nvim",
+        dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+        keys = {
+            {
+                "<leader>tmi",
+                "<cmd>TSToolsAddMissingImports<cr>",
+                desc = "TS: Add missing imports",
+            },
+            {
+                "<leader>tmu",
+                "<cmd>TSToolsRemoveUnused<cr>",
+                desc = "TS: Remove unused",
+            },
+            {
+                "<leader>tmo",
+                "<cmd>TSToolsOrganizeImports<cr>",
+                desc = "TS: Sort and remove unused imports",
+            },
+        },
+        opts = {
+            settings = {
+                expose_as_code_action = "all",
+            },
+        },
     },
 }
