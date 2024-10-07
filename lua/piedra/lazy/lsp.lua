@@ -12,10 +12,11 @@ return {
     },
     {
         "hrsh7th/nvim-cmp",
+        dependencies = { "onsails/lspkind.nvim" },
         event = "InsertEnter",
         config = function()
             local cmp = require("cmp")
-            local cmp_action = require("lsp-zero").cmp_action()
+            local lspkind = require("lspkind")
 
             cmp.setup({
                 window = {
@@ -23,6 +24,7 @@ return {
                     documentation = cmp.config.window.bordered(),
                 },
                 sources = {
+                    { name = "supermaven" },
                     { name = "nvim_lsp" },
                     { name = "path" },
                     { name = "buffer", keyword_length = 3 },
@@ -44,6 +46,15 @@ return {
                     expand = function(args)
                         vim.snippet.expand(args.body)
                     end,
+                },
+                formatting = {
+                    format = lspkind.cmp_format({
+                        mode = "symbol_text",
+                        maxwidth = 50,
+                        ellipsis_char = "...",
+                        show_labelDetails = true,
+                        symbol_map = { Supermaven = "" },
+                    }),
                 },
             })
         end,
@@ -220,6 +231,7 @@ return {
     {
         "pmizio/typescript-tools.nvim",
         dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+        lazy = false,
         keys = {
             {
                 "<leader>tmi",
