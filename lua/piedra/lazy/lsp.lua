@@ -179,6 +179,11 @@ return {
                     update_in_insert = false,
                 })
 
+                vim.lsp.handlers["textDocument/hover"] =
+                    vim.lsp.with(vim.lsp.handlers.hover, {
+                        border = "rounded",
+                    })
+
                 vim.o.updatetime = 1000
             end
 
