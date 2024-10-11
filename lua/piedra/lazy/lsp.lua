@@ -184,6 +184,44 @@ return {
                         border = "rounded",
                     })
 
+                -- override the default select function to show the source of
+                -- the code action
+                -- https://github.com/neovim/neovim/issues/30710
+                local original_vim_ui_select = vim.ui.select
+                ---@diagnostic disable-next-line: duplicate-set-field
+                vim.ui.select = function(items, select_opts, on_choice)
+                    if select_opts.kind ~= "codeaction" then
+                        return original_vim_ui_select(
+                            items,
+                            select_opts,
+                            on_choice
+                        )
+                    end
+
+                    -- original fn: https://github.com/neovim/neovim/blob/release-0.10/runtime/lua/vim/lsp/buf.lua#L812
+                    ---@param item {action: lsp.Command|lsp.CodeAction}
+                    select_opts.format_item = function(item)
+                        local formatted = item.action.title
+                            :gsub("\r\n", "\\r\\n")
+                            :gsub("\n", "\\n")
+
+                        local client_id = item.ctx and item.ctx.client_id
+                        if client_id then
+                            local action_client =
+                                vim.lsp.get_client_by_id(client_id)
+                            local source_name = action_client
+                                    and action_client.name
+                                or "unknown"
+
+                            formatted = formatted .. " [" .. source_name .. "]"
+                        end
+
+                        return formatted
+                    end
+
+                    original_vim_ui_select(items, select_opts, on_choice)
+                end
+
                 vim.o.updatetime = 1000
             end
 
