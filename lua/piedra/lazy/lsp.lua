@@ -69,6 +69,7 @@ return {
             { "williamboman/mason-lspconfig.nvim" },
         },
         config = function()
+            ---@diagnostic disable-next-line: unused-local
             local lsp_attach = function(client, bufnr)
                 local opts = { buffer = bufnr }
 
@@ -113,12 +114,12 @@ return {
                     "<cmd>lua vim.lsp.buf.rename()<cr>",
                     opts
                 )
-                vim.keymap.set(
-                    { "n", "x" },
-                    "<leader>lf",
-                    "<cmd>lua vim.lsp.buf.format({async = true})<cr>",
-                    opts
-                )
+                -- vim.keymap.set(
+                --     { "n", "x" },
+                --     "<leader>lf",
+                --     "<cmd>lua vim.lsp.buf.format({async = true})<cr>",
+                --     opts
+                -- )
                 vim.keymap.set(
                     "n",
                     "<leader>lca",
@@ -199,7 +200,7 @@ return {
                     end
 
                     -- original fn: https://github.com/neovim/neovim/blob/release-0.10/runtime/lua/vim/lsp/buf.lua#L812
-                    ---@param item {action: lsp.Command|lsp.CodeAction}
+                    ---@param item {action: lsp.Command|lsp.CodeAction, ctx: lsp.CodeActionContext}
                     select_opts.format_item = function(item)
                         local formatted = item.action.title
                             :gsub("\r\n", "\\r\\n")
@@ -252,7 +253,7 @@ return {
                     "taplo",
                     "terraformls",
                     "tflint",
-                    -- "ts_ls",
+                    "ts_ls",
                 },
                 handlers = {
                     function(server_name)
@@ -267,35 +268,91 @@ return {
                             end,
                         })
                     end,
+                    ts_ls = function()
+                        local lspconfig = require("lspconfig")
+                        lspconfig.ts_ls.setup({
+                            on_attach = function(client, bufnr)
+                                client.server_capabilities.documentFormattingProvider =
+                                    false
+                                client.server_capabilities.documentFormattingRangeProvider =
+                                    false
+
+                                local opts = {
+                                    buffer = bufnr,
+                                    noremap = true,
+                                    silent = true,
+                                }
+
+                                vim.keymap.set(
+                                    "n",
+                                    "<leader>tmi",
+                                    "<cmd>TsLsAddMissingImports<CR>",
+                                    opts
+                                )
+                                vim.keymap.set(
+                                    "n",
+                                    "<leader>tmu",
+                                    "<cmd>TsLsRemoveUnused<CR>",
+                                    opts
+                                )
+                                vim.keymap.set(
+                                    "n",
+                                    "<leader>tmo",
+                                    "<cmd>TsLsOrganizeImports<CR>",
+                                    opts
+                                )
+                            end,
+                            commands = {
+                                TsLsAddMissingImports = {
+                                    function()
+                                        vim.lsp.buf.code_action({
+                                            apply = true,
+                                            context = {
+                                                diagnostics = {},
+                                                only = {
+                                                    ---@diagnostic disable-next-line: assign-type-mismatch
+                                                    "source.addMissingImports.ts",
+                                                },
+                                            },
+                                        })
+                                    end,
+                                    description = "Typescript LS: Add missing imports",
+                                },
+                                TsLsRemoveUnused = {
+                                    function()
+                                        vim.lsp.buf.code_action({
+                                            apply = true,
+                                            context = {
+                                                diagnostics = {},
+                                                only = {
+                                                    ---@diagnostic disable-next-line: assign-type-mismatch
+                                                    "source.removeUnused.ts",
+                                                },
+                                            },
+                                        })
+                                    end,
+                                    description = "Typescript LS: Remove unused imports",
+                                },
+                                TsLsOrganizeImports = {
+                                    function()
+                                        vim.lsp.buf.code_action({
+                                            apply = true,
+                                            context = {
+                                                diagnostics = {},
+                                                only = {
+                                                    ---@diagnostic disable-next-line: assign-type-mismatch
+                                                    "source.organizeImports.ts",
+                                                },
+                                            },
+                                        })
+                                    end,
+                                    description = "Typescript LS: Organize imports (sort and remove unused)",
+                                },
+                            },
+                        })
+                    end,
                 },
             })
         end,
-    },
-    {
-        "pmizio/typescript-tools.nvim",
-        dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-        lazy = false,
-        keys = {
-            {
-                "<leader>tmi",
-                "<cmd>TSToolsAddMissingImports<cr>",
-                desc = "TS: Add missing imports",
-            },
-            {
-                "<leader>tmu",
-                "<cmd>TSToolsRemoveUnused<cr>",
-                desc = "TS: Remove unused",
-            },
-            {
-                "<leader>tmo",
-                "<cmd>TSToolsOrganizeImports<cr>",
-                desc = "TS: Sort and remove unused imports",
-            },
-        },
-        opts = {
-            settings = {
-                expose_as_code_action = "all",
-            },
-        },
     },
 }
