@@ -247,7 +247,7 @@ return {
                     "marksman",
                     -- "prismals",
                     "pyright",
-                    "ruff_lsp",
+                    "ruff",
                     "rust_analyzer",
                     "tailwindcss",
                     "taplo",
