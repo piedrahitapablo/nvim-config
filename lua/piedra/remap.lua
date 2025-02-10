@@ -43,6 +43,10 @@ vim.keymap.set("n", "<leader>Y", '"+Y')
 vim.keymap.set("n", "<leader>d", '"_d')
 vim.keymap.set("v", "<leader>d", '"_d')
 
+-- * but stay in the current position
+-- if problematic use the solution in https://superuser.com/a/299693
+vim.keymap.set("n", "*", "*N")
+
 -- same as *
 vim.keymap.set("n", "<leader>ss", [[/\<<C-r><C-w>\>]])
 vim.keymap.set("v", "<leader>ss", [[/\<<C-r><C-w>\>]])
