@@ -16,6 +16,8 @@ return {
                 component_separators = { left = "", right = "" },
                 disabled_filetypes = {
                     "packer",
+                    "Avante",
+                    "AvanteSelectedFiles",
                 },
             },
             sections = {
