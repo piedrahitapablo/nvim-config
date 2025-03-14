@@ -1,21 +1,5 @@
-DefaultTheme = "onedark"
-LualineDefaultTheme = "onedark"
-
 function SetTheme(color)
-    color = color or DefaultTheme
     vim.cmd.colorscheme(color)
-
-    -- get the default value for the NormalFloat group
-    local NormalFloat = vim.api.nvim_get_hl_by_name("NormalFloat", true)
-
-    vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-    vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-    vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "none", fg = "LightBlue" })
-    vim.api.nvim_set_hl(0, "WhiteSpace", { bg = "none", fg = "#3f3f3f" })
-    vim.api.nvim_set_hl(0, "NonText", { bg = "none", fg = "#3f3f3f" })
-
-    -- Treesitter context
-    vim.api.nvim_set_hl(0, "TreesitterContextBottom", NormalFloat)
 end
 
 return {
@@ -32,7 +16,6 @@ return {
     {
         "Shatur/neovim-ayu",
         name = "ayu",
-        lazy = true,
     },
     {
         "rose-pine/neovim",
@@ -52,9 +35,33 @@ return {
             onedark.setup({
                 style = "deep",
                 transparent = true,
+                highlights = {
+                    Normal = {
+                        bg = "none",
+                    },
+                    NormalFloat = {
+                        bg = "none",
+                    },
+                    EndOfBuffer = {
+                        bg = "none",
+                        fg = "LightBlue",
+                    },
+                    WhiteSpace = {
+                        bg = "none",
+                        fg = "#3f3f3f",
+                    },
+                    NonText = {
+                        bg = "none",
+                        fg = "#3f3f3f",
+                    },
+                    WinSeparator = {
+                        bg = "none",
+                        fg = "#3f3f3f",
+                    },
+                },
             })
 
-            SetTheme()
+            SetTheme("onedark")
         end,
     },
     {
@@ -62,6 +69,21 @@ return {
         opts = {
             tint = -20,
             saturation = 0.5,
+        },
+    },
+    {
+        "meanderingexile/nostromo-ui.nvim",
+        opts = {
+            theme = "dark",
+            transparent = true,
+            italics = {
+                comments = false,
+                keywords = false,
+                functions = false,
+                strings = false,
+                variables = false,
+            },
+            overrides = {},
         },
     },
 }
