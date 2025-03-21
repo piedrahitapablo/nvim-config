@@ -1,10 +1,10 @@
 return {
-    {
-        "lukas-reineke/indent-blankline.nvim",
-        main = "ibl",
-        enabled = false,
-        opts = {},
-    },
+    -- {
+    --     "lukas-reineke/indent-blankline.nvim",
+    --     main = "ibl",
+    --     enabled = false,
+    --     opts = {},
+    -- },
     {
         "nvim-lualine/lualine.nvim",
         dependencies = { "nvim-tree/nvim-web-devicons" },

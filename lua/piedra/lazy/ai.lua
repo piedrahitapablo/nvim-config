@@ -27,13 +27,14 @@ return {
                 minimize_diff = true,
                 enable_token_counting = true,
             },
+            file_selector = {
+                provider = "snacks",
+            },
         },
         build = "make",
         dependencies = {
-            "stevearc/dressing.nvim",
             "nvim-lua/plenary.nvim",
             "MunifTanjim/nui.nvim",
-            "nvim-telescope/telescope.nvim",
             "hrsh7th/nvim-cmp",
             "nvim-tree/nvim-web-devicons",
             {
