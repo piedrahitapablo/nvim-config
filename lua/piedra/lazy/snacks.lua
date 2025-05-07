@@ -14,10 +14,11 @@ return {
                 col = 0,
             },
         },
-        notifier = { enabled = true },
+        notifier = { enabled = true, style = "fancy" },
+        picker = { enabled = true },
         quickfile = { enabled = true },
         scope = { enabled = true },
-        scroll = { enabled = true },
+        -- scroll = { enabled = true },
         words = { enabled = true },
     },
 }
