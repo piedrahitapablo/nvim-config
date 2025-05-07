@@ -81,8 +81,34 @@ vim.keymap.set("n", "<leader>kr", ":set relativenumber!<CR>")
 -- select pasted text
 vim.keymap.set("n", "gp", "`[v`]")
 
--- close all buffers but the current
-vim.keymap.set("n", "<leader>cab", ":%bd|e#<CR>")
+-- close all buffers that are not visible
+vim.keymap.set("n", "<leader>cab", function()
+    -- Get all buffers
+    local buffers = vim.api.nvim_list_bufs()
+
+    -- Get visible buffers
+    local visible_buffers = {}
+    for _, win in ipairs(vim.api.nvim_list_wins()) do
+        local buf = vim.api.nvim_win_get_buf(win)
+        visible_buffers[buf] = true
+    end
+
+    -- Close non-visible buffers
+    local closed_count = 0
+    for _, buf in ipairs(buffers) do
+        if
+            not visible_buffers[buf]
+            and vim.api.nvim_buf_is_valid(buf)
+            and vim.api.nvim_get_option_value("buflisted", { buf = buf })
+        then
+            vim.api.nvim_buf_delete(buf, { force = false })
+            closed_count = closed_count + 1
+        end
+    end
+    
+    -- Show how many buffers were closed
+    vim.notify("Closed " .. closed_count .. " buffer(s)", vim.log.levels.INFO)
+end)
 
 -- buffer resize utils
 vim.keymap.set(
@@ -98,3 +124,4 @@ vim.api.nvim_create_user_command("W", "w", {
 vim.api.nvim_create_user_command("Q", "q", {
     desc = "Also quit",
 })
+
