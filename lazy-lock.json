@@ -1,6 +1,6 @@
 {
   "auto-session": { "branch": "main", "commit": "00334ee24b9a05001ad50221c8daffbeedaa0842" },
-  "avante.nvim": { "branch": "main", "commit": "b2064a8f40cbd10ddd3ea9d82f0bdb2bcaf2f152" },
+  "avante.nvim": { "branch": "main", "commit": "e98bb8d3bae102662c5ad4ada1ce63a9aacac4e0" },
   "ayu": { "branch": "master", "commit": "f5da37a8ddd62fc3a7b28900c4d1b807a3582584" },
   "barbecue.nvim": { "branch": "main", "commit": "3e31404f0b93a2c30d151abf0648650ac811c664" },
   "blink.cmp": { "branch": "main", "commit": "022521a8910a5543b0251b21c9e1a1e989745796" },
