@@ -105,7 +105,7 @@ vim.keymap.set("n", "<leader>cab", function()
             closed_count = closed_count + 1
         end
     end
-    
+
     -- Show how many buffers were closed
     vim.notify("Closed " .. closed_count .. " buffer(s)", vim.log.levels.INFO)
 end)
@@ -124,4 +124,3 @@ vim.api.nvim_create_user_command("W", "w", {
 vim.api.nvim_create_user_command("Q", "q", {
     desc = "Also quit",
 })
-
