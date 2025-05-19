@@ -16,12 +16,9 @@ return {
                     local lsp_opts = { buffer = event.buf }
 
                     vim.keymap.set("n", "<leader>lre", "<cmd>LspRestart<cr>")
-                    vim.keymap.set(
-                        "n",
-                        "K",
-                        "<cmd>lua vim.lsp.buf.hover()<cr>",
-                        lsp_opts
-                    )
+                    vim.keymap.set("n", "K", function()
+                        vim.lsp.buf.hover({ border = "rounded" })
+                    end, lsp_opts)
                     vim.keymap.set("n", "<leader>ld", function()
                         local telescope_builtin = require("telescope.builtin")
                         telescope_builtin.lsp_definitions()
@@ -103,7 +100,7 @@ return {
                             -- }
 
                             vim.diagnostic.open_float(nil, {
-                                focusable = false,
+                                focusable = true,
                                 close_events = {
                                     "BufLeave",
                                     "CursorMoved",
@@ -122,11 +119,6 @@ return {
                         underline = true,
                         update_in_insert = false,
                     })
-
-                    vim.lsp.handlers["textDocument/hover"] =
-                        vim.lsp.with(vim.lsp.handlers.hover, {
-                            border = "rounded",
-                        })
 
                     vim.o.updatetime = 1000
                 end,
