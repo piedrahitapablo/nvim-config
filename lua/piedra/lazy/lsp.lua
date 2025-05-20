@@ -89,18 +89,7 @@ return {
                     vim.api.nvim_create_autocmd("CursorHold", {
                         buffer = lsp_opts.buffer,
                         callback = function()
-                            -- TODO: add formatter using these icons and a newline at the end
-                            -- mirror format from trouble
-                            -- {
-                            --     error = "",
-                            --     warning = "",
-                            --     hint = "",
-                            --     information = "",
-                            --     other = "﫠"
-                            -- }
-
                             vim.diagnostic.open_float(nil, {
-                                focusable = true,
                                 close_events = {
                                     "BufLeave",
                                     "CursorMoved",
@@ -109,7 +98,6 @@ return {
                                 },
                                 border = "rounded",
                                 source = "always",
-                                -- scope = 'cursor',
                             })
                         end,
                     })

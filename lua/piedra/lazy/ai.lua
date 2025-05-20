@@ -3,6 +3,7 @@ return {
         "supermaven-inc/supermaven-nvim",
         opts = {
             color = {
+                -- suggestion_color = "PaleTurquoise3",
                 suggestion_color = "lightgreen",
                 cterm = 244,
             },
