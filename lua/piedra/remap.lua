@@ -116,11 +116,3 @@ vim.keymap.set(
     "<leader>w80",
     ':lua vim.cmd("vertical resize " .. math.floor(vim.o.columns * 0.8))<CR>'
 )
-
--- prevent errors for having slow/fast fingers
-vim.api.nvim_create_user_command("W", "w", {
-    desc = "Also save",
-})
-vim.api.nvim_create_user_command("Q", "q", {
-    desc = "Also quit",
-})

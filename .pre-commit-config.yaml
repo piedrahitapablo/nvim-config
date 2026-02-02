@@ -8,6 +8,6 @@ repos:
       - id: mixed-line-ending
       - id: trailing-whitespace
   - repo: https://github.com/JohnnyMorganz/StyLua
-    rev: v0.17.1
+    rev: v2.1.0
     hooks:
       - id: stylua-github

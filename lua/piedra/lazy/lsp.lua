@@ -15,12 +15,13 @@ return {
                 "docker_compose_language_service",
                 "dockerls",
                 "eslint",
-                "gopls",
+                -- "gopls",
                 "html",
                 "jsonls",
                 "lua_ls",
                 "marksman",
-                "pyright",
+                -- "pyright",
+                "basedpyright",
                 "ruff",
                 "rust_analyzer",
                 "tailwindcss",
@@ -42,6 +43,11 @@ return {
                 ["<CR>"] = { "accept", "fallback" },
             },
             completion = {
+                accept = {
+                    auto_brackets = {
+                        enabled = false,
+                    },
+                },
                 documentation = {
                     auto_show = true,
                     auto_show_delay_ms = 500,
@@ -93,6 +99,10 @@ return {
                 typescript = { "prettier", stop_after_first = true },
                 typescriptreact = { "prettier", stop_after_first = true },
                 markdown = { "prettier", stop_after_first = true },
+                json = { "prettier", stop_after_first = true },
+                jsonc = { "prettier", stop_after_first = true },
+                yaml = { "prettier", stop_after_first = true },
+                html = { "prettier", stop_after_first = true },
             },
             default_format_opts = {
                 lsp_format = "fallback",

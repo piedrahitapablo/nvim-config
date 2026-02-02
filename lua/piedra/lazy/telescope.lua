@@ -70,10 +70,26 @@ return {
             local telescope_builtin = require("telescope.builtin")
             vim.keymap.set("n", "<leader>tf", telescope_builtin.find_files, {})
             vim.keymap.set("n", "<leader>ts", telescope_builtin.live_grep, {})
+            vim.keymap.set("n", "<leader>tws", function()
+                local word = vim.fn.expand("<cword>")
+                telescope_builtin.live_grep({ default_text = word })
+            end, {})
+            vim.keymap.set("v", "<leader>tws", function()
+                local selection = vim.fn.getregion(
+                    vim.fn.getpos("v"),
+                    vim.fn.getpos("."),
+                    { mode = "v" }
+                )
+                local search_text = table.concat(selection, "\n")
+                telescope_builtin.live_grep({ default_text = search_text })
+            end, {})
             vim.keymap.set("n", "<leader>ty", function()
                 telescope_builtin.grep_string({
                     search = vim.fn.input("Grep > "),
                 })
+            end)
+            vim.keymap.set("v", "<leader>ty", function()
+                telescope_builtin.grep_string()
             end)
             vim.keymap.set(
                 "n",

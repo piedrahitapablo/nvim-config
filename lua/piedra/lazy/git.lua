@@ -22,6 +22,7 @@ local function GitBranchName()
 end
 
 return {
+    { "sindrets/diffview.nvim" },
     {
         "tpope/vim-fugitive",
         config = function()
@@ -43,6 +44,14 @@ return {
                 vim.cmd(string.format("G checkout %s", opts.fargs[1]))
             end, {
                 desc = "Git checkout",
+                force = false,
+                nargs = 1,
+            })
+
+            vim.api.nvim_create_user_command("Gcb", function(opts)
+                vim.cmd(string.format("G checkout -b %s", opts.fargs[1]))
+            end, {
+                desc = "Git checkout -b",
                 force = false,
                 nargs = 1,
             })
