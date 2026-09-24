@@ -24,6 +24,18 @@ end
 return {
     { "sindrets/diffview.nvim" },
     {
+        "barrettruth/diffs.nvim",
+        lazy = false,
+        priority = 999,
+        init = function()
+            vim.g.diffs = {
+                integrations = { fugitive = true },
+                extra_filetypes = { "diff" },
+                conflict = { enabled = false },
+            }
+        end,
+    },
+    {
         "tpope/vim-fugitive",
         config = function()
             vim.keymap.set("n", "<leader>gs", FugitiveStatus)
