@@ -31,6 +31,7 @@ return {
             vim.g.diffs = {
                 integrations = { fugitive = true },
                 extra_filetypes = { "diff" },
+                highlights = { blend_alpha = 1.0 },
                 conflict = { enabled = false },
             }
         end,

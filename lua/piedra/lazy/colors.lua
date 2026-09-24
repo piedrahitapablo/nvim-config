@@ -16,6 +16,8 @@ return {
             style = "deep",
             transparent = true,
             highlights = {
+                DiffAdd = { bg = "#234c35" },
+                DiffDelete = { bg = "#582b34" },
                 Normal = {
                     bg = "none",
                 },
